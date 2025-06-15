@@ -1,0 +1,37 @@
+<section class="w-75 mx-auto">
+  <h2 class="text-center fw-bolder">{{ 'orders.Shipping Address' | translate }}</h2>
+  <form  [formGroup]="userInformation" (ngSubmit)="CheckOut()">
+    <div class="form-group my-1">
+      <label for="details">{{'orders.Details' |translate}}</label>
+      <input formControlName="details" type="text" id="details" name="details" class="form-control" />
+      @if (userInformation.get('details')?.errors && userInformation.get('details')?.touched) {
+        @if (userInformation.get('details')?.getError('required')) {
+        <div class="alert alert-danger w-50">
+          <p class="m-0">This Field Is Required</p>
+        </div>
+        }}
+    </div>
+    <div class="form-group my-1">
+      <label for="phone">{{ 'orders.Phone' | translate }}</label>
+      <input formControlName="phone" type="tel" id="phone" name="phone" class="form-control" />
+      @if (userInformation.get('phone')?.errors && userInformation.get('phone')?.touched) {
+        @if (userInformation.get('phone')?.getError('required')) {
+        <div class="alert alert-danger w-50">
+          <p class="m-0">This Field Is Required</p>
+        </div>
+        }
+        @else if (userInformation.get("phone")?.getError("pattern")) {
+          <div class="alert alert-danger w-50">
+            <p class="m-0">This Field Is invalid</p>
+          </div>
+        }
+      }
+
+    </div>
+    <div class="form-group my-1">
+      <label for="city">{{ 'orders.City' | translate }}</label>
+      <input formControlName="city" type="text" id="city" name="city" class="form-control" />
+    </div>
+    <button class="btn btn-main mt-2" type="submit">{{ 'orders.Check Out' | translate }}</button>
+  </form>
+</section>

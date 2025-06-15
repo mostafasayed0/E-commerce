@@ -1,0 +1,63 @@
+<nav class="navbar navbar-expand-lg bg-body-tertiary">
+  <div class="container">
+    <button
+      class="navbar-toggler"
+      type="button"
+      data-bs-toggle="collapse"
+      data-bs-target="#navbarNav"
+      aria-controls="navbarNav"
+      aria-expanded="false"
+      aria-label="Toggle navigation"
+    >
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav">
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="home"
+            >{{'navbar.home' | translate}}</a
+          >
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" routerLinkActive="active-link" routerLink="brands">{{'navbar.brands' | translate}}</a>
+        </li>
+      </ul>
+    </div>
+    <div>
+      <ul class="navbar-nav curs">
+
+        <li class="nav-item">
+          <a class="nav-link rounded-3" routerLinkActive="active-link" routerLink="cart" #cartElement>
+            <i class="fa-solid fs-4 fa-cart-arrow-down " ></i>
+          <span class="badge bg-info  ">{{CartNumbers()}}</span>
+        </a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link "><i class="curs fa-brands fa-facebook"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"><i class="curs fa-brands fa-twitter"></i></a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link"><i class="curs fa-brands fa-instagram"></i></a>
+        </li>
+        <li class="nav-item dropdown">
+          <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+            <i class="fa-solid fa-language fs-3"></i>
+          </a>
+          <ul class="dropdown-menu">
+            <li><a [class.bg-info]="_TranslateService.currentLang === 'ar'" class="dropdown-item" (click)="chooselang('ar')">Ar</a></li>
+            <li><a [class.bg-info]="_TranslateService.currentLang === 'en'" class="dropdown-item" (click)="chooselang('en')">En</a></li>
+          </ul>
+        </li>
+        <li class="nav-item">
+          <a
+            class="nav-link cursor-pointer rounded-1 btn btn-outline-info border"
+            (click)="out()"
+            >{{'navbar.logout' | translate}}</a
+          >
+        </li>
+      </ul>
+    </div>
+  </div>
+</nav>

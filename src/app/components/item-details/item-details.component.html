@@ -1,0 +1,49 @@
+<!--  دى هنا عشان ميحملش الhtml
+  والداتا لسه مرجعتش
+  مش هيعرض غير لما الداتا تكون اتخزنت فى SpecificProduct
+  وانا عطيها intial value null
+  ولما الداتا ترجع هتكون ب true
+  ودا هيخلى الhtml يظهر
+
+  -->
+@if (SpecificProduct) {
+  <section class="py-3">
+    <div class="container m-auto">
+    <div class="row align-items-center text-center">
+    <h1>{{SpecificProduct.category.name}}</h1>
+    <div class="col-md-3 shadow-sm">
+      <owl-carousel-o [options]="customOptions">
+        @for (item of SpecificProduct.images; track SpecificProduct._id) {
+        <ng-template carouselSlide><img [src]="item" [alt]="SpecificProduct.title" ></ng-template>
+        }
+
+      </owl-carousel-o>
+
+
+    </div>
+    <div class="col-md-9">
+      <div>
+        <h2 class="my-2">{{SpecificProduct.title}}</h2>
+        <p class="text-muted">{{SpecificProduct.description}}</p>
+        <div class="d-flex justify-content-between w-50 m-auto ">
+          <div>
+            @for (num of [1,2,3,4,5].slice(0, SpecificProduct.ratingsAverage); track $index) {
+            <span><i class="fa fa-star rating-color"></i></span>
+          }
+          @if (SpecificProduct.ratingsAverage%1 !==0) {
+            <i class="fa-regular fa-star-half-stroke rating-color"></i>
+          }
+          <span class="text-muted">{{SpecificProduct.ratingsAverage}}</span>
+          </div>
+          <div>
+            <span class="h2">{{SpecificProduct.price}} EGP</span>
+          </div>
+        </div>
+
+      </div>
+      <button class="btn btn-outline-success w-50 py-1" (click)="addTocart(SpecificProduct._id)">{{"cart.addToCart" | translate}}</button>
+    </div>
+  </div>
+    </div>
+</section>
+}

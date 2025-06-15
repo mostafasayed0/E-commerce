@@ -1,0 +1,66 @@
+{
+  "navbar": {
+    "home": "الرئيسية",
+    "products": "المنتجات",
+    "cart": "السلة",
+    "orders": "الطلبات",
+    "profile": "الملف الشخصي",
+    "login": "تسجيل الدخول",
+    "logout": "تسجيل الخروج",
+    "register": "إنشاء حساب",
+    "brands": "العلامات التجارية"
+  },
+  "home":{
+    "More Products....": "المزيد من المنتجات....",
+    "addToCart": "أضف إلى السلة",
+    "search": "بحث"
+  },
+  "cart":{
+    "addToCart": "أضف إلى السلة",
+    "Shopping Cart": "عربة التسوق",
+    "Total Price": "السعر الإجمالي",
+    "Price": "السعر",
+    "Clear All": "مسح الكل",
+    "Go to Payment": "اذهب إلى الدفع"
+   },
+   "orders":{
+     "Shipping Address": "عنوان الشحن",
+     "Details": "التفاصيل",
+     "Phone": "الهاتف",
+    "City": "المدينة",
+    "Check Out": "الدفع"
+  },
+  "all orders":{
+    "All Orders From Site": "جميع الطلبات من الموقع",
+    "Payment date": "تاريخ الدفع",
+    "Payment time": "وقت الدفع",
+    "Price": "السعر",
+    "Payment Method": "طريقة الدفع"
+   },
+   "login":{
+     "Login Here": "تسجيل الدخول",
+     "Email": "البريد الإلكتروني",
+     "Password": "كلمة المرور",
+     "Forgotten password": "نسيت كلمة المرور?"
+   },
+   "register":{
+     "Name": "الاسم",
+     "Email": "البريد الإلكتروني",
+     "Password": "كلمة المرور",
+     "Confirm Password": "تأكيد كلمة المرور",
+     "Phone": "الهاتف",
+     "submit": "إرسال"
+   },
+   "nav-auth":{
+     "Login": "تسجيل الدخول",
+     "Register": "إنشاء حساب"
+   },
+   "footer":{
+    "Get The Flex App": "احصل على تطبيق فليكس",
+    "We Will Send You a Link, Open it on Your Phone to download the app": "سنرسل لك رابطًا، افتحه على هاتفك لتنزيل التطبيق",
+    "Share App Link": "شارك رابط التطبيق",
+    "Payment partners": "شركاء الدفع",
+    "Get Deliveries with Flex": "احصل على التوصيلات مع فليكس"
+  }
+
+  }

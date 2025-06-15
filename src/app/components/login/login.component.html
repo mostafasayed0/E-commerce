@@ -1,0 +1,51 @@
+<section class="w-75 mx-auto">
+  <form [formGroup]="loginform" (ngSubmit)="send()">
+    <div>
+      <label for="email">{{ 'login.Email' | translate }}</label>
+      <input formControlName="email" id="email" type="email" class="form-control">
+
+            @if (loginform.get('email')?.errors && loginform.get('email')?.touched) {
+            @if (loginform.get('email')?.getError('required')) {
+            <div class="alert alert-danger w-50">
+              <p class="m-0">This Field Is Required</p>
+            </div>
+            }
+            @else if (loginform.get('email')?.getError('email')) {
+            <div class="alert alert-danger w-50">
+              <p class="m-0">Enter Valid Email</p>
+            </div>
+            }
+            }
+    </div>
+    <div>
+      <label for="password">{{ 'login.Password' | translate }}</label>
+      <input formControlName="password" id="password" type="password" class="form-control">
+
+      @if (loginform.get('password')?.errors && loginform.get('password')?.touched) {
+        @if (loginform.get('password')?.getError('required')) {
+          <div class="alert alert-danger w-50">
+            <p class="m-0">This Field Is Required</p>
+          </div>
+        }
+        @else if (loginform.get('password')?.getError('pattern')) {
+        <div class="alert alert-danger w-50">
+          <p class="m-0">Enter Valid Password</p>
+        </div>
+        }
+      }
+    </div>
+
+
+    <button  class="btn btn-main my-2">Login
+      @if (isLoading) {
+      <i class="fa fa-spin fa-spinner"></i>
+      }
+    </button>
+    <br>
+    <a class="link-info" routerLink="/forget-password">{{ 'login.Forgotten password' | translate }}</a>
+
+
+
+    <!-- [disabled]="loginform.invalid" -->
+  </form>
+</section>
