@@ -1,33 +1,43 @@
 <footer class="bg-main-light py-5">
   <div class="container">
-    <h2 class="m-0 h4">{{ 'footer.Get The Flex App' | translate }}</h2>
+    <!-- عنوان -->
+    <h2 class="m-0 h4">
+      {{ 'footer.Get The Flex App' | translate }}
+    </h2>
     <p class="text-muted small">
-      {{'footer.We Will Send You a Link, Open it on Your Phone to download the app' | translate }}
+      {{ 'footer.We Will Send You a Link, Open it on Your Phone to download the app' | translate }}
     </p>
 
-    <!-- inputs design  -->
-    <div class="d-flex align-items-center gap-3 text-nowrap">
-      <input type="text" class="form-control" placeholder="Email" />
-      <button class="btn-main">{{ 'footer.Share App Link' | translate }}</button>
+    <!-- ✅ inputs - Responsive Row -->
+    <div class="row g-2">
+      <div class="col-12 col-md-8">
+        <input type="text" class="form-control" placeholder="Email" />
+      </div>
+      <div class="col-12 col-md-4">
+        <button class="btn btn-main w-100">{{ 'footer.Share App Link' | translate }}</button>
+      </div>
     </div>
 
-    <hr />
+    <hr class="my-4" />
 
-    <!-- footer payment Details Design  -->
-    <div class="pay-details d-flex justify-content-between align-items-center">
-      <div class="d-flex align-items-center gap-2">
-        <h3 class="h6 m-0">{{ 'footer.Payment partners' | translate }}</h3>
-        <img src="./assets/images/amazon.jpeg" width="30px" alt="" />
-        <img src="./assets/images/paypal.jpeg" width="30px" alt="" />
-        <img src="./assets/images/mastercard.jpeg" width="30px" alt="" />
+    <!-- ✅ Payment & Store Details - Responsive -->
+    <div class="row gy-3">
+      <div class="col-12 col-md-6">
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <h3 class="h6 m-0">{{ 'footer.Payment partners' | translate }}</h3>
+          <img src="./assets/images/amazon.jpeg" width="30" alt="Amazon" />
+          <img src="./assets/images/paypal.jpeg" width="30" alt="PayPal" />
+          <img src="./assets/images/mastercard.jpeg" width="30" alt="MasterCard" />
+        </div>
       </div>
 
-      <div class="d-flex align-items-center gap-2">
-        <h3 class="h6 m-0">{{ 'footer.Get Deliveries with Flex' | translate }}</h3>
-        <img src="./assets/images/appstore.jpeg" width="75px" alt="" />
-        <img src="./assets/images/googleplay.jpeg" width="75px" alt="" />
+      <div class="col-12 col-md-6">
+        <div class="d-flex align-items-center gap-2 flex-wrap">
+          <h3 class="h6 m-0">{{ 'footer.Get Deliveries with Flex' | translate }}</h3>
+          <img src="./assets/images/appstore.jpeg" width="75" alt="App Store" />
+          <img src="./assets/images/googleplay.jpeg" width="75" alt="Google Play" />
+        </div>
       </div>
     </div>
   </div>
 </footer>
-

@@ -6,7 +6,7 @@
           <owl-carousel-o [options]="customOptionsMain">
             @for (image of images; track $index) {
             <ng-template carouselSlide >
-              <img [src]="image" class="w-100" height="500px" alt="photo">
+              <img [src]="image" class="img-fluid" height="500px" alt="photo">
             </ng-template>
           }
           </owl-carousel-o>
