@@ -19,21 +19,38 @@
     </div>
     <div>
       <label for="password">{{ 'login.Password' | translate }}</label>
-      <input formControlName="password" id="password" type="password" class="form-control">
+
+      <div class="input-group">
+        <input
+          [type]="showPassword ? 'text' : 'password'"
+          formControlName="password"
+          id="password"
+          class="form-control"
+        >
+        <button
+          type="button"
+          class="btn btn-outline-secondary"
+          (click)="showPassword = !showPassword"
+          tabindex="-1"
+        >
+          <i [class]="showPassword ? 'fa fa-eye-slash' : 'fa fa-eye'"></i>
+        </button>
+      </div>
 
       @if (loginform.get('password')?.errors && loginform.get('password')?.touched) {
         @if (loginform.get('password')?.getError('required')) {
-          <div class="alert alert-danger w-50">
+          <div class="alert alert-danger w-50 mt-2">
             <p class="m-0">This Field Is Required</p>
           </div>
         }
         @else if (loginform.get('password')?.getError('pattern')) {
-        <div class="alert alert-danger w-50">
-          <p class="m-0">Enter Valid Password</p>
-        </div>
+          <div class="alert alert-danger w-50 mt-2">
+            <p class="m-0">Enter Valid Password</p>
+          </div>
         }
       }
     </div>
+
 
 
     <button  class="btn btn-main my-2">Login
