@@ -1,0 +1,68 @@
+{
+  "navbar": {
+    "home": "Home",
+    "shop": "Shop",
+    "cart": "Cart",
+    "checkout": "Checkout",
+    "login": "Login",
+    "logout": "Logout",
+    "register": "Register",
+    "profile": "Profile",
+    "brands": "Brands",
+    "category": "Categories",
+    "product": "Products"
+  },
+  "home":{
+    "More Products....": "More Products....",
+    "addToCart": "Add to Cart",
+    "search": "Search"
+  },
+  "cart":{
+    "addToCart": "Add to Cart",
+    "Shopping Cart": "Shopping Cart",
+    "Total Price": "Total Price",
+    "Price": "Price",
+    "Clear All": "Clear All",
+    "Go to Payment": "Go to Payment"
+  },
+  "orders":{
+    "Shipping Address": "Shipping Address",
+    "Details": "Details",
+    "Phone": "Phone",
+    "City": "City",
+    "Check Out": "Check Out"
+  },
+  "all orders":{
+    "All Orders From Site": "All Orders From Site",
+    "Payment date": "Payment date",
+    "Payment time": "Payment time",
+    "Price": "Price",
+    "Payment Method": "Payment Method"
+  },
+  "login":{
+    "Login Here": "Login Here",
+    "Email": "Email",
+    "Password": "Password",
+    "Forgotten password": "Forgotten password?"
+  },
+  "register":{
+    "Register Here": "Register Here",
+    "Name": "Name",
+    "Email": "Email",
+    "Password": "Password",
+    "Confirm Password": "Confirm Password",
+    "Phone": "Phone",
+    "submit": "Submit"
+  },
+  "nav-auth":{
+    "Login": "Login",
+    "Register": "Register"
+  },
+  "footer":{
+    "Get The Flex App": "Get The Flex App",
+    "We Will Send You a Link, Open it on Your Phone to download the app": "We Will Send You a Link, Open it on Your Phone to download the app",
+    "Share App Link": "Share App Link",
+    "Payment partners": "Payment partners",
+    "Get Deliveries with Flex": "Get Deliveries with Flex"
+  }
+}
