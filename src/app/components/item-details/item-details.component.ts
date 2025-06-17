@@ -38,6 +38,7 @@ export class ItemDetailsComponent implements OnInit, OnDestroy {
   addTocart(id: string): void {
     this._CartService.AddToCart(id).subscribe({
       next: (res) => {
+        this._CartService.cartNumber.set(res.numOfCartItems);
         console.log(res);
         if (res.status === 'success') {
           this._ToastrService.success(res.message, 'Success')
