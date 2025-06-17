@@ -24,7 +24,6 @@ import { TranslateModule } from '@ngx-translate/core';
     TermtextPipe,
     FormsModule,
     UpperCasePipe,
-    SearchPipe,
     CurrencyPipe,
     TranslateModule,
   ],
@@ -39,10 +38,15 @@ export class HomeComponent implements OnInit, OnDestroy {
   private readonly _CatograyService = inject(CatograyService);
   private readonly _CartService = inject(CartService);
   private _Toastr = inject(ToastrService);
+  private _Router = inject(Router);
 
   SubscribeValue!: Subscription;
   CatograySubscribeValue!: Subscription;
-  private _Router = inject(Router);
+
+  allProducts: Iproduct[] = [];
+  filteredProducts: Iproduct[] = [];
+  showCount = 12;
+
   images: string[] = [
     './assets/imges2/pexels-sid-cam-photography-330592-978249.jpg',
     './assets/imges2/large-blogbannerzralien.webp',
@@ -69,22 +73,35 @@ export class HomeComponent implements OnInit, OnDestroy {
       .subscribe({
         next: (res) => {
           this.Categorylist.set(res.data);
-          console.log(this.Categorylist);
         },
       });
 
     this.SubscribeValue = this._ProductsService.getAllproducts().subscribe({
       next: (res) => {
-        console.log(res.data);
+        this.allProducts = res.data;
+        this.filteredProducts = [...this.allProducts];
         this.products.set(res.data);
       },
     });
   }
 
+  applySearch() {
+    const term = this.keysesrch?.toLowerCase() ?? '';
+    this.filteredProducts = this.allProducts.filter(
+      (item) =>
+        item.title.toLowerCase().includes(term) ||
+        item.category.name.toLowerCase().includes(term)
+    );
+    this.showCount = 12;
+  }
+
+  loadMore() {
+    this.showCount += 12;
+  }
+
   addproducttocart(id: string): void {
     this._CartService.AddToCart(id).subscribe({
       next: (res) => {
-        console.log(res);
         if (res.status === 'success') {
           this._CartService.cartNumber.set(res.numOfCartItems);
           this._Toastr.success(res.message, 'Success', {
@@ -102,6 +119,10 @@ export class HomeComponent implements OnInit, OnDestroy {
   ngOnDestroy(): void {
     this.SubscribeValue?.unsubscribe();
     this.CatograySubscribeValue?.unsubscribe();
+  }
+
+  getId(id: string) {
+    this._Router.navigate(['/item-details', id]);
   }
 
   customOptionsMain: OwlOptions = {
@@ -146,9 +167,6 @@ export class HomeComponent implements OnInit, OnDestroy {
     },
     nav: true,
   };
-
-  getId(id: string) {
-    this._Router.navigate(['/item-details', id]);
-  }
 }
+
 

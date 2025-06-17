@@ -1,122 +1,82 @@
 <section>
-  <div class="container">
+  <div class="container-fluid mt-3">
     <div class="row g-0">
-      <div class="col-md-10">
-        <div>
-          <owl-carousel-o [options]="customOptionsMain">
-            @for (image of images; track $index) {
-            <ng-template carouselSlide >
-              <img [src]="image" class="img-fluid" height="500px" alt="photo">
+      <div class="col-md-9">
+        <owl-carousel-o [options]="customOptionsMain">
+          @for (image of images; track $index) {
+            <ng-template carouselSlide>
+              <img [src]="image" class="img-fluid" height="500px" alt="photo" />
             </ng-template>
           }
-          </owl-carousel-o>
-        </div>
+        </owl-carousel-o>
       </div>
-      <div class="col-md-2">
-        <div>
-          <img src="../../../assets/imges2/pexels-markusspiske-3806753.jpg" height="250px" alt="pho2" class="w-100 d-sm-none d-md-block">
-        </div>
-        <div>
-          <img src="../../../assets/imges2/black_304404755-2.jpg" height="250px" alt="pho2" class="w-100 d-sm-none d-md-block">
-        </div>
+      <div class="col-md-3">
+        <img src="../../../assets/imges2/pexels-markusspiske-3806753.jpg" height="500px" alt="photo1" class="w-100 d-sm-none d-md-block" />
+        <img src="../../../assets/imges2/black_304404755-2.jpg" height="300px" alt="photo2" class="w-100 d-sm-none d-md-block" />
       </div>
     </div>
   </div>
-
-
-
 </section>
+
 <section class="py-1 mt-2">
-<owl-carousel-o [options]="customOptions">
-      @for (cat of Categorylist(); track $index) {
-        <ng-template carouselSlide>
-          <div class="cat-card">
-          <img [src]="cat.image" height="250px" [alt]="cat.name" [title]="cat.name">
-          <h3 class="h6 text-center text-muted">{{cat.name}}</h3>
-          </div>
-        </ng-template>
-      }
-
-
+  <owl-carousel-o [options]="customOptions">
+    @for (cat of Categorylist(); track $index) {
+      <ng-template carouselSlide>
+        <div class="cat-card">
+          <img [src]="cat.image" height="250px" [alt]="cat.name" [title]="cat.name" />
+          <h3 class="h6 text-center text-muted">{{ cat.name }}</h3>
+        </div>
+      </ng-template>
+    }
   </owl-carousel-o>
 </section>
 
 <section>
-<div class="container-fluid">
-  <input type="search" class="form-control w-50 mx-auto my-2" placeholder="{{'home.search' | translate}}" [(ngModel)]="keysesrch" >
-  <div class="row py-1">
-    <!-- لو عندى حاجه unique in Interface استخدمها -->
-     <!-- slice(0,12) دى بتقص وتعرض اول 12 منتج -->
-    @for (item of products().slice(0,12) |search:keysesrch; track item._id) {
-    <div class="col-md-2">
-      <div class="product p-2 ">
-        <div (click)="getId(item._id)">
-      <img [src]='item.imageCover' class="w-100" [alt]="item.title">
-      <h3 class="small"> {{item.category.name |uppercase}}</h3>
-      <h4>{{item.title | termtext : 2 }}</h4>
-      <div  class="d-flex justify-content-between align-items-center">
-        <span>{{item.price |currency : 'GBP'}} </span>
-        <div>
-          <!-- هنا هو مش بيراعى الكسر اللى ف التققيم -->
-          @for (num of [1,2,3,4,5].slice(0,item.ratingsAverage); track $index) {
-            <span><i class="fa fa-star rating-color"></i></span>
-          }
+  <div class="container-fluid">
+    <input
+      type="search"
+      class="form-control w-50 mx-auto my-2"
+      placeholder="{{ 'home.search' | translate }}"
+      [(ngModel)]="keysesrch"
+      (ngModelChange)="applySearch()"
+    />
 
-          @if (item.ratingsAverage%1 !==0) {
-            <i class="fa-regular fa-star-half-stroke rating-color"></i>
-          }
-
-          <span class="text-muted">{{item.ratingsAverage}}</span>
-        </div>
-      </div>
-        </div>
-      <button class="btn btn-outline-success w-100" (click)="addproducttocart(item._id)">{{"home.addToCart" | translate}}</button>
-      </div>
-    </div>
-    }
-  </div>
-</div>
-</section>
-
-
-@defer (on interaction(more)) {
-  <section>
-    <div class="container-fluid">
-      <div class="row py-1">
-        <!-- لو عندى حاجه unique in Interface استخدمها -->
-         <!-- slice(0,12) دى بتقص وتعرض اول 12 منتج -->
-        @for (item of products().slice(13,40) ; track item._id) {
-        <div class="col-md-2">
-          <div class="product p-2 ">
+    <div class="row py-1">
+      @for (item of filteredProducts.slice(0, showCount); track item._id) {
+        <div class="col-md-2 mb-3">
+          <div class="product p-2 h-100 d-flex flex-column justify-content-between">
             <div (click)="getId(item._id)">
-          <img [src]='item.imageCover' class="w-100" [alt]="item.title">
-          <h3 class="small"> {{item.category.name |uppercase}}</h3>
-          <h4>{{item.title | termtext : 2 }}</h4>
-          <div  class="d-flex justify-content-between align-items-center">
-            <span>{{item.price |currency : 'GBP'}} </span>
-            <div>
-              <!-- هنا هو مش بيراعى الكسر اللى ف التققيم -->
-              @for (num of [1,2,3,4,5].slice(0,item.ratingsAverage); track $index) {
-                <span><i class="fa fa-star rating-color"></i></span>
-              }
-
-              @if (item.ratingsAverage%1 !==0) {
-                <i class="fa-regular fa-star-half-stroke rating-color"></i>
-              }
-
-              <span class="text-muted">{{item.ratingsAverage}}</span>
+              <img [src]="item.imageCover" class="w-100" [alt]="item.title" />
+              <h3 class="small">{{ item.category.name | uppercase }}</h3>
+              <h4>{{ item.title | termtext: 2 }}</h4>
+              <div class="d-flex justify-content-between align-items-center">
+                <span>{{ item.price | currency: 'GBP' }}</span>
+                <div>
+                  @for (num of [1, 2, 3, 4, 5].slice(0, item.ratingsAverage); track $index) {
+                    <span><i class="fa fa-star rating-color"></i></span>
+                  }
+                  @if (item.ratingsAverage % 1 !== 0) {
+                    <i class="fa-regular fa-star-half-stroke rating-color"></i>
+                  }
+                  <span class="text-muted">{{ item.ratingsAverage }}</span>
+                </div>
+              </div>
             </div>
-          </div>
-            </div>
-          <button class="btn btn-outline-success w-100" (click)="addproducttocart(item._id)">{{"home.addToCart" | translate}}</button>
+            <button class="btn btn-outline-success w-100 mt-2" (click)="addproducttocart(item._id)">
+              {{ 'home.addToCart' | translate }}
+            </button>
           </div>
         </div>
-        }
-      </div>
+      }
     </div>
-    </section>
-}
 
-@placeholder {
-  <p #more class="more text-center fw-bolder mt-4">{{"home.More Products...." | translate}}</p>
-}
+    <div class="text-center">
+      @if (showCount < filteredProducts.length) {
+              <button class="btn btn-outline-primary" (click)="loadMore()">
+        {{ 'home.More Products....' | translate }}
+      </button>
+      }
+
+    </div>
+  </div>
+</section>
