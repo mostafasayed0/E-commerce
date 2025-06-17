@@ -5,14 +5,15 @@
         <owl-carousel-o [options]="customOptionsMain">
           @for (image of images; track $index) {
             <ng-template carouselSlide>
-              <img [src]="image" class="img-fluid" height="500px" alt="photo" />
+              <img [src]="image" class="img-fluid w-100" style="max-height: 500px; object-fit: cover;" alt="photo" />
             </ng-template>
           }
         </owl-carousel-o>
       </div>
-      <div class="col-md-3">
-        <img src="../../../assets/imges2/pexels-markusspiske-3806753.jpg" height="500px" alt="photo1" class="w-100 d-sm-none d-md-block" />
-        <img src="../../../assets/imges2/black_304404755-2.jpg" height="300px" alt="photo2" class="w-100 d-sm-none d-md-block" />
+
+      <div class="col-md-3 d-none d-md-block">
+        <img src="../../../assets/imges2/pexels-markusspiske-3806753.jpg" class="img-fluid w-100 mb-2" style="max-height: 250px; object-fit: cover;" alt="photo1" />
+        <img src="../../../assets/imges2/black_304404755-2.jpg" class="img-fluid w-100" style="max-height: 250px; object-fit: cover;" alt="photo2" />
       </div>
     </div>
   </div>
@@ -22,9 +23,9 @@
   <owl-carousel-o [options]="customOptions">
     @for (cat of Categorylist(); track $index) {
       <ng-template carouselSlide>
-        <div class="cat-card">
-          <img [src]="cat.image" height="250px" [alt]="cat.name" [title]="cat.name" />
-          <h3 class="h6 text-center text-muted">{{ cat.name }}</h3>
+        <div class="cat-card text-center">
+          <img [src]="cat.image" height="250" [alt]="cat.name" [title]="cat.name" class="img-fluid mx-auto d-block mb-2" />
+          <h3 class="h6 text-muted">{{ cat.name }}</h3>
         </div>
       </ng-template>
     }
@@ -35,7 +36,7 @@
   <div class="container-fluid">
     <input
       type="search"
-      class="form-control w-50 mx-auto my-2"
+      class="form-control w-100 w-md-50 mx-auto my-2"
       placeholder="{{ 'home.search' | translate }}"
       [(ngModel)]="keysesrch"
       (ngModelChange)="applySearch()"
@@ -43,12 +44,12 @@
 
     <div class="row py-1">
       @for (item of filteredProducts.slice(0, showCount); track item._id) {
-        <div class="col-md-2 mb-3">
-          <div class="product p-2 h-100 d-flex flex-column justify-content-between">
-            <div (click)="getId(item._id)">
-              <img [src]="item.imageCover" class="w-100" [alt]="item.title" />
-              <h3 class="small">{{ item.category.name | uppercase }}</h3>
-              <h4>{{ item.title | termtext: 2 }}</h4>
+        <div class="col-6 col-sm-4 col-md-3 col-lg-2 mb-3">
+          <div class="product p-2 h-100 d-flex flex-column justify-content-between shadow-sm border rounded">
+            <div (click)="getId(item._id)" class="cursor-pointer">
+              <img [src]="item.imageCover" class="w-100 mb-2" [alt]="item.title" style="aspect-ratio: 1; object-fit: cover;" />
+              <h3 class="small mb-1">{{ item.category.name | uppercase }}</h3>
+              <h4 class="mb-2">{{ item.title | termtext: 2 }}</h4>
               <div class="d-flex justify-content-between align-items-center">
                 <span>{{ item.price | currency: 'GBP' }}</span>
                 <div>
