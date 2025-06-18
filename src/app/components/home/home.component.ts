@@ -48,16 +48,21 @@ export class HomeComponent implements OnInit, OnDestroy {
   showCount = 12;
 
   images: string[] = [
-    './assets/imges2/pexels-sid-cam-photography-330592-978249.jpg',
+    './assets/imges2/pexels-lagosfoodbank-8069555.jpg',
+    './assets/imges2/pexels-aggeliki-siomou-3384790-10815265.jpg',
+    './assets/imges2/pexels-theshuttervision-9660945.jpg',
+    './assets/imges2/pexels-tree-of-life-seeds-1708680-3577295.jpg',
+    './assets/imges2/pexels-zeleboba-27915430.jpg',
+    './assets/imges2/pexels-cottonbro-9748713.jpg',
+    './assets/imges2/pexels-kampus-7289717.jpg',
+    './assets/imges2/pexels-ron-lach-7801874.jpg',
     './assets/imges2/large-blogbannerzralien.webp',
-    './assets/imges2/pexels-coppertist-wu-313365563-16003885.jpg',
     './assets/imges2/pexels-cottonbro-10599961.jpg',
     './assets/imges2/pexels-cottonbro-4427642.jpg',
     './assets/imges2/pexels-hngstrm-2547007.jpg',
     './assets/imges2/pexels-kish-1488463.jpg',
     './assets/imges2/pexels-max-fischer-5872348.jpg',
     './assets/imges2/pexels-paulseling-20385205.jpg',
-    './assets/imges2/pexels-pixabay-207456.jpg',
     './assets/imges2/pexels-pixabay-220137.jpg',
     './assets/imges2/pexels-pixabay-264636.jpg',
     './assets/imges2/pexels-shvetsa-3962285.jpg',
@@ -86,13 +91,24 @@ export class HomeComponent implements OnInit, OnDestroy {
   }
 
   applySearch() {
-    const term = this.keysesrch?.toLowerCase() ?? '';
-    this.filteredProducts = this.allProducts.filter(
-      (item) =>
-        item.title.toLowerCase().includes(term) ||
-        item.category.name.toLowerCase().includes(term)
-    );
-    this.showCount = 12;
+    const keyword = this.keysesrch?.trim().toLowerCase();
+
+    if (!keyword) {
+      this.filteredProducts = this.allProducts;
+      return;
+    }
+
+    this.filteredProducts = this.allProducts.filter((product) => {
+      const title = (product.title || '').toLowerCase().replace(/\s+/g, '');
+      const category = (product.category?.name || '')
+        .toLowerCase()
+        .replace(/\s+/g, '');
+      const keywordProcessed = keyword.replace(/\s+/g, '');
+
+      return (
+        title.includes(keywordProcessed) || category.includes(keywordProcessed)
+      );
+    });
   }
 
   loadMore() {
