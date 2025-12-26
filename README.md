@@ -6,12 +6,25 @@ The project demonstrates best practices in component-based architecture, routing
 ---
 
 ## ✨ Features
-- Product listing and details pages
+- Product listing from external API
+- Product details page
 - Responsive design for all screen sizes
-- Reusable components
-- Clean project structure
-- Ready for API integration
+- Reusable and modular components
+- Clean and scalable project structure
+- API integration using Angular services
 - Built with Angular best practices
+
+---
+
+## 🌐 API Integration
+
+The application integrates with a REST API to fetch products data dynamically.
+
+### API Features
+- Fetch all products
+- Fetch product details by ID
+
+API calls are handled using Angular services and `HttpClient` for better code organization and scalability.
 
 ---
 
