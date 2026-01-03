@@ -1,58 +1,76 @@
-# 🛒 Ecommerce Application
-
-A modern and responsive e-commerce web application built with **Angular 17**.  
-The project demonstrates best practices in component-based architecture, routing, and scalable frontend development.
-
----
+A high-performance, feature-rich E-commerce application built with **Angular 17**, featuring Server-Side Rendering (SSR), multi-language support, and a responsive design.
 
 ## ✨ Features
-- Product listing from external API
-- Product details page
-- Responsive design for all screen sizes
-- Reusable and modular components
-- Clean and scalable project structure
-- API integration using Angular services
-- Built with Angular best practices
 
----
+- 🔐 **Authentication**: Secure Login, Registration, and Forgot Password flow (with OTP/Verification).
+- 🛍️ **Product Catalog**: Dynamic product listing with search and filtering by brands and categories.
+- 📦 **Order Management**: Comprehensive order tracking and history.
+- 🛒 **Shopping Cart**: Advanced cart management with real-time updates.
+- 🌍 **Multi-language**: Seamless language switching powered by `ngx-translate`.
+- ⚡ **Performance**: SSR (Server-Side Rendering) for faster SEO and page loads.
+- 📱 **Responsive**: Fully optimized for mobile, tablet, and desktop views.
 
-## 🌐 API Integration
+## 🛠️ Tech Stack
 
-The application integrates with a REST API to fetch products data dynamically.
-
-### API Features
-- Fetch all products
-- Fetch product details by ID
-
-API calls are handled using Angular services and `HttpClient` for better code organization and scalability.
-
----
-
-## 🛠 Tech Stack
-- **Angular 17**
-- **TypeScript**
-- **HTML5**
-- **CSS3 / SCSS**
-- **Angular CLI**
-
----
-📁 Project Structure
-src/
- ├── app/
- │   ├── core/
- │   ├── shared/
- │   ├── features/
- │   └── app.module.ts
- ├── assets/
- └── environments/
----
+- **Core**: Angular 17 (Standalone Components)
+- **UI Architecture**: Bootstrap 5.3 + FontAwesome 6
+- **Animations**: `ngx-spinner`, `ngx-toastr`, `ngx-owl-carousel-o`
+- **Utilities**: RxJS, JWT-decode, Bootstrap
 
 ## 🚀 Getting Started
 
 ### Prerequisites
-Make sure you have the following installed:
-- Node.js (v18+ recommended)
-- Angular CLI
 
+- Node.js (Latest LTS recommended)
+- Angular CLI (`npm install -g @angular/cli`)
+
+### Installation
+
+1. Clone the repository:
+   ```bash
+   git clone https://github.com/mostafasayed0/E-commerce.git
+   ```
+
+2. Install dependencies:
+   ```bash
+   npm install
+   ```
+
+3. Run the development server:
+   ```bash
+   ng serve
+   ```
+   Navigate to `http://localhost:4200/`.
+
+## 🏗️ Building & Deployment
+
+### Build
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory.
+
+### SSR Build
+To build for Server-Side Rendering:
 ```bash
-npm install -g @angular/cli
+npm run build
+```
+
+### Serve SSR
+```bash
+npm run serve:ssr:ecommerce
+```
+
+## 📂 Project Structure
+
+```text
+src/
+├── app/
+│   ├── components/   # UI Features (Home, Cart, Auth, etc.)
+│   ├── core/         # Services, Guards, Interceptors, Pipes
+│   ├── layouts/      # Main and Auth layout wrappers
+│   └── interfaces/   # TypeScript Data Models
+├── assets/           # Images, i18n JSON files, styles
+└── index.html        # App entry point
+```
+
+## 📄 License
+
+This project is licensed under the MIT License - see the [LICENSE](LICENSE) file for details.
